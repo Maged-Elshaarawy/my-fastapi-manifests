@@ -18,3 +18,11 @@ spec:
           image: magedelshaarawy/project-frontend:latest
           ports:
             - containerPort: 3000
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config
